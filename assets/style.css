@@ -1,0 +1,11 @@
+body,
+html {
+}
+.teams-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  min-height: 80vh;
+}
