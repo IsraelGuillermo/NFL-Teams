@@ -1,19 +1,31 @@
 
 
-function queryUrl() {
-    var url= 'http://newsapi.org/v2/top-headlines?' +
-        'q=nfl&' +
-        'from=2020-10-23' +
-        'sortBy=popularity&' +
-        'apiKey=e36111cc3f7946369149bb71ead841ff';
-    var req = new Request(url);
-    
-    fetch(req)
-        .then(function(response) {
-            console.log(response.json());
-        })
-        return req;
-}
+$('#teams').on('change', function queryUrl() {
+    var teamSelected= $(this).find('option:selected').text();
+    function newsQuery(){
+    var url= 'https://gnews.io/api/v4/search?q=' +
+        teamSelected +
+        'ecb04637f4c2aa21b0666704531e67ed';
+      return url;
+    }
+    var otherQueryUrl = newsQuery();
+
+    fetch('https://gnews.io/api/v4/search?q=example&token=ecb04637f4c2aa21b0666704531e67ed')
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+    });
+    /*
+    $.ajax({
+      url: otherQueryUrl,
+      method: "GET",
+    }).then(function (response) {
+      console.log(response);
+    });
+    */
+});
 
 $("#teams").on("change", function () {
   var teamSelected = $(this).find("option:selected").text();
