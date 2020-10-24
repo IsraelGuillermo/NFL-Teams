@@ -1,11 +1,6 @@
 
-var chooseTeam = [
-    'Arizona Cardinals',
-    'Atlanta Falcons',
-]
 
 function queryUrl() {
-    var 
     var url= 'http://newsapi.org/v2/top-headlines?' +
         'q=nfl&' +
         'from=2020-10-23' +
