@@ -6,7 +6,7 @@ var chooseTeam = [
 function queryUrl() {
     var 
     var url= 'http://newsapi.org/v2/top-headlines?' +
-        'q=Apple&' +
+        'q=nfl&' +
         'from=2020-10-23' +
         'sortBy=popularity&' +
         'apiKey=e36111cc3f7946369149bb71ead841ff';
