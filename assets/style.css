@@ -7,5 +7,8 @@ html {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+}
+
+.height {
   min-height: 80vh;
 }
