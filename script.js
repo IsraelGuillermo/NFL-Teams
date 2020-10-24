@@ -1,30 +1,33 @@
 
 
-$('#teams').on('change', function queryUrl() {
+$('#teams').on('change', function () {
     var teamSelected= $(this).find('option:selected').text();
     function newsQuery(){
-    var url= 'https://gnews.io/api/v4/search?q=' +
+    var url= 'https://gnews.io/api/v4/top-headlines?token=' +
         teamSelected +
-        'ecb04637f4c2aa21b0666704531e67ed';
+        '=ecb04637f4c2aa21b0666704531e67ed';
+        
       return url;
     }
-    var otherQueryUrl = newsQuery();
-
-    fetch('https://gnews.io/api/v4/search?q=example&token=ecb04637f4c2aa21b0666704531e67ed')
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    });
-    /*
+    var otherQueryUrl = newsQuery();    
     $.ajax({
       url: otherQueryUrl,
       method: "GET",
     }).then(function (response) {
       console.log(response);
     });
-    */
+    
+  //works with the following code. we need to use ajax though.
+
+/*
+   fetch('https://gnews.io/api/v4/search?q=example&token=ecb04637f4c2aa21b0666704531e67ed')
+   .then(function (response) {
+       return response.json();
+   })
+   .then(function (data) {
+       console.log(data);
+   });
+   */
 });
 
 $("#teams").on("change", function () {
