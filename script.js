@@ -1,3 +1,19 @@
+
+
+
+$('#teams').on('change', function () {
+    var teamSelected= $(this).find('option:selected').text();
+    var baseUrl='https://gnews.io/api/v4/search?q='
+    var apiKey='ecb04637f4c2aa21b0666704531e67ed'
+    $.ajax({
+      url: baseUrl + teamSelected + '&token=' + apiKey,
+      
+      method: "GET",
+    }).then(function (response) {
+      console.log(response);
+    });
+
+
 var teams = [];
 var baseURL = "https://www.thesportsdb.com/api/v1/json/1/";
 
@@ -29,6 +45,7 @@ $.ajax({
       .text(response.teams[i].strTeam)
       .attr("data-teamId", response.teams[i].idTeam);
   }
+
 });
 
 $("#teams").on("change", function () {
