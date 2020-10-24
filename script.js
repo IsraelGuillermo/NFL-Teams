@@ -1,36 +1,18 @@
-
-
-
-$('#teams').on('change', function () {
-    var teamSelected= $(this).find('option:selected').text();
-    var baseUrl='https://gnews.io/api/v4/search?q='
-    var apiKey='ecb04637f4c2aa21b0666704531e67ed'
-    $.ajax({
-      url: baseUrl + teamSelected + '&token=' + apiKey,
-      
-      method: "GET",
-    }).then(function (response) {
-      console.log(response);
-    });
-
+$("#teams").on("change", function () {
+  var teamSelected = $(this).find("option:selected").text();
+  var baseUrl = "https://gnews.io/api/v4/search?q=";
+  var apiKey = "ecb04637f4c2aa21b0666704531e67ed";
+  $.ajax({
+    url: baseUrl + teamSelected + "&token=" + apiKey,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+  });
+});
 
 var teams = [];
 var baseURL = "https://www.thesportsdb.com/api/v1/json/1/";
 
-function queryUrl() {
-  var url =
-    "http://newsapi.org/v2/top-headlines?" +
-    "q=nfl&" +
-    "from=2020-10-23" +
-    "sortBy=popularity&" +
-    "apiKey=e36111cc3f7946369149bb71ead841ff";
-  var req = new Request(url);
-
-  fetch(req).then(function (response) {
-    console.log(response.json());
-  });
-  return req;
-}
 $.ajax({
   url: baseURL + "search_all_teams.php?l=NFL",
   method: "GET",
@@ -45,7 +27,6 @@ $.ajax({
       .text(response.teams[i].strTeam)
       .attr("data-teamId", response.teams[i].idTeam);
   }
-
 });
 
 $("#teams").on("change", function () {
@@ -60,6 +41,7 @@ $("#teams").on("change", function () {
     //TODO: Get Scores and Get Team Names.  Show team name and the score
     console.log(response);
     displaySchedule(response.results);
+
     //intAwayScore
     //idAwayTeam
 
