@@ -37,7 +37,6 @@ $("#teams").on("change", function () {
   $("#schedule").empty();
 
   $("<h1>").text("Schedule").appendTo("#title").addClass("is-size-2");
-  $("<h1>").text("Articles").appendTo("#title").addClass("is-size-2");
 
   teamSelected = $(this).find("option:selected").attr("data-teamId");
   $.ajax({
@@ -167,6 +166,8 @@ function displayPreviousScores(previousGame) {
 
 
 //Script for displaying articles begins here.
+
+
 
 function displayArticles(articles) {
   $("#dropdown").removeClass("height").addClass("mb-3 mt-3");
