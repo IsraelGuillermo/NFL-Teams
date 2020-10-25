@@ -12,3 +12,15 @@ html {
 .height {
   min-height: 80vh;
 }
+
+.hide {
+  display: none;
+}
+
+main {
+  border: red 20px solid;
+}
+
+.winner {
+  font-weight: bold;
+}
