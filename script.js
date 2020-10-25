@@ -37,6 +37,7 @@ $("#teams").on("change", function () {
   $("#schedule").empty();
 
   $("<h1>").text("Schedule").appendTo("#title").addClass("is-size-2");
+  $("<h1>").text("Articles").appendTo("#title").addClass("is-size-2");
 
   teamSelected = $(this).find("option:selected").attr("data-teamId");
   $.ajax({
@@ -162,4 +163,22 @@ function displayPreviousScores(previousGame) {
     .appendTo(div);
 
   div.prependTo("#schedule");
+}
+
+
+//Script for displaying articles begins here.
+
+function displayArticles(articles) {
+  $("#dropdown").removeClass("height").addClass("mb-3 mt-3");
+
+  for (var i = 0; i < articles.length; i++) {
+    var div = $("<div>").addClass("columns");
+    $('<h1>')
+    .text(articles[i].title + articles[i].description)
+
+    .addClass("is-size-5")
+    .appendTo(div);
+
+    div.appendTo("#Articles").addClass("ml-5");
+}
 }
