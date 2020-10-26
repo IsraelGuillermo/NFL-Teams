@@ -37,6 +37,8 @@ $("#teams").on("change", function () {
   $("#schedule").empty();
 
   $("<h1>").text("Schedule").appendTo("#title").addClass("is-size-2");
+  
+  $("<h1>").text("Team News").appendTo("#tname").addClass("is-size-2");
 
   teamSelected = $(this).find("option:selected").attr("data-teamId");
   $.ajax({
