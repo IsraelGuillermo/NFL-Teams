@@ -175,11 +175,11 @@ function displayArticles(articles) {
   for (var i = 0; i < articles.length; i++) {
     var div = $("<div>").addClass("columns");
     $('<h1>')
-    .text(articles[i].title + articles[i].description)
+    .text(articles[i].title + articles[i].description + articles[i].url)
 
     .addClass("is-size-5")
     .appendTo(div);
 
-    div.appendTo("#Articles").addClass("ml-5");
+    div.appendTo("#articles").addClass("ml-5");
 }
 }
