@@ -7,11 +7,13 @@ $("#teams").on("change", function () {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    displayArticles(response.articles);
   });
 });
 
 var teams = [];
 var baseURL = "https://www.thesportsdb.com/api/v1/json/1/";
+var baseUrl = "https://gnews.io/api/v4/search?q="
 
 $.ajax({
   url: baseURL + "search_all_teams.php?l=NFL",
@@ -98,6 +100,15 @@ $("#teams").on("change", function () {
       displaySchedule(response.events);
     });
   });
+/*
+  $.ajax({
+    url: baseUrl + teamSelected,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    displayArticles(response.articles);
+  });
+  */
 });
 
 // function displayPastGames(events) {
@@ -175,13 +186,17 @@ function displayArticles(articles) {
   $("#dropdown").removeClass("height").addClass("mb-3 mt-3");
 
   for (var i = 0; i < articles.length; i++) {
-    var div = $("<div>").addClass("columns");
+    var div = $("<div>");
     $('<h1>')
-    .text(articles[i].title + articles[i].description)
+      .text(articles[i].title)
+      .addClass("is-size-5")
+      .appendTo(div);
 
-    .addClass("is-size-5")
-    .appendTo(div);
+    $('<p>')
+      .text(articles[i].description)
+      .appendTo(div);
 
-    div.appendTo("#Articles").addClass("ml-5");
-}
+    div.appendTo("#tname").addClass("ml-5");
+  console.log();
+  }
 }
