@@ -1,0 +1,25 @@
+body,
+html {
+  
+}
+.teams-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+aside {
+  padding: 5rem;
+}
+main {
+  padding: 5rem;
+}
+.height {
+  min-height: 80vh;
+}
+
+.hide {
+  display: none;
+}

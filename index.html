@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NFL Teams</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+      integrity="sha256-WLKGWSIJYerRN8tbNGtXWVYnUM5wMJTXD8eG4NtGcDM="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <section class="hero is-dark">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">NFL Team Search Engine</h1>
+          <h2 class="subtitle">Search for your favorite team!</h2>
+        </div>
+      </div>
+    </section>
+    <div id="dropdown" class="container teams-container height">
+      <div
+        class="select is-justify-self-center is-align-content-center is-large"
+      >
+        <select id="teams">
+          <option>Select Your Team</option>
+        </select>
+        <button id="save">Save As Favorite!</button>
+      </div>
+      <div id="buttons"></div>
+    </div>
+    <aside class="container is-pulled-left =mobile">
+      <div id="title" class="container ml-2 mb-3"></div>
+      <div class="container ml-2" id="schedule"></div>
+      <div class="container ml-2" id="scores"></div>
+    </aside>
+    <main class="container is-pulled-right =mobile">
+      <div id="tname" class="container mx-2 mb-3"></div>
+      <div class="container ml-4" id="news"></div>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
