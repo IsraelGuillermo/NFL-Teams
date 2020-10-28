@@ -13,7 +13,7 @@ $("#teams").on("change", function () {
 
 var teams = [];
 var baseURL = "https://www.thesportsdb.com/api/v1/json/1/";
-var baseUrl = "https://gnews.io/api/v4/search?q="
+var baseUrl = "https://gnews.io/api/v4/search?q=";
 
 $.ajax({
   url: baseURL + "search_all_teams.php?l=NFL",
@@ -37,9 +37,9 @@ $.ajax({
 $("#teams").on("change", function () {
   console.log(teams);
   $("#schedule").empty();
-
+  $("#title").empty();
   $("<h1>").text("Schedule").appendTo("#title").addClass("is-size-2");
-  
+
   $("<h1>").text("Team News").appendTo("#tname").addClass("is-size-2");
 
   teamSelected = $(this).find("option:selected").attr("data-teamId");
@@ -100,7 +100,7 @@ $("#teams").on("change", function () {
       displaySchedule(response.events);
     });
   });
-/*
+  /*
   $.ajax({
     url: baseUrl + teamSelected,
     method: "GET",
@@ -177,26 +177,18 @@ function displayPreviousScores(previousGame) {
   div.prependTo("#schedule");
 }
 
-
 //Script for displaying articles begins here.
-
-
 
 function displayArticles(articles) {
   $("#dropdown").removeClass("height").addClass("mb-3 mt-3");
 
   for (var i = 0; i < articles.length; i++) {
     var div = $("<div>");
-    $('<h1>')
-      .text(articles[i].title)
-      .addClass("is-size-5")
-      .appendTo(div);
+    $("<h1>").text(articles[i].title).addClass("is-size-5").appendTo(div);
 
-    $('<p>')
-      .text(articles[i].description)
-      .appendTo(div);
+    $("<p>").text(articles[i].description).appendTo(div);
 
     div.appendTo("#tname").addClass("ml-5");
-  console.log();
+    console.log();
   }
 }
