@@ -130,7 +130,7 @@ function displaySchedule(events) {
   $("#dropdown").removeClass("height").addClass("mb-3 mt-3");
 
   for (var i = 0; i < events.length; i++) {
-    var div = $("<div>").addClass("columns");
+    var div = $("<div>").addClass("columns notification")
     $("<h1>")
       .text(events[i].dateEvent + " " + events[i].strEvent)
 
@@ -158,7 +158,7 @@ function displayPreviousScores(previousGame) {
   console.log("Away:" + getTeamNameFromId(idAwayTeam), awayScore);
   var homeScore = previousGame.intHomeScore;
   var idHomeTeam = previousGame.idHomeTeam;
-  var div = $("<div>").addClass("columns ml-5");
+  var div = $("<div>").addClass("columns ml-5 notification");
 
   $("<h1>")
     .text(
@@ -187,17 +187,32 @@ function displayArticles(articles) {
   //$("#dropdown").removeClass("height").addClass("mb-3 mt-3");
   $("<h1>").text("Team News").appendTo("#tname").addClass("is-size-2");
   for (var i = 0; i < articles.length; i++) {
-    var div = $("<div>");
-    $('<h1>')
-      .text(articles[i].title)
+    var div = $("<div>").addClass("notification");
+    var newH1= $('<h1>')
+      
       .addClass("is-size-5")
       .appendTo(div);
 
-    $('<p>')
-      .text(articles[i].description)
+    
+
+
+    $('<a>')
+      .attr("target", "_blank").attr("href", articles[i].url).text(articles[i].title).appendTo(newH1)
+    //need to stop word count of description after 100 characters.
+    var description = articles[i].description;
+      if(description.length > 100) {
+        description = description.substring(0, 99).concat("...")
+      }
+
+    //after 100 characters add an elipses.
+    
+      $('<p>')
+      .text(description)
       .appendTo(div);
 
     div.appendTo("#tname").addClass ("ml-5");
   console.log();
   }
+
+
 }
