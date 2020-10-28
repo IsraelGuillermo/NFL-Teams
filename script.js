@@ -1,6 +1,6 @@
 $("#teams").on("change", function () {
   var teamSelected = $(this).find("option:selected").text();
-  var baseUrl = "https://gnews.io/api/v4/search?q=";
+  var baseUrl = "https://gnews.io/api/v4/search?&lang=en&q=";
   var apiKey = "ecb04637f4c2aa21b0666704531e67ed";
   $.ajax({
     url: baseUrl + teamSelected + "&token=" + apiKey,
@@ -37,10 +37,11 @@ $.ajax({
 $("#teams").on("change", function () {
   console.log(teams);
   $("#schedule").empty();
-
+  $("#tname").empty();
+  $("#title").empty( );
   $("<h1>").text("Schedule").appendTo("#title").addClass("is-size-2");
   
-  $("<h1>").text("Team News").appendTo("#tname").addClass("is-size-2");
+  
 
   teamSelected = $(this).find("option:selected").attr("data-teamId");
   $.ajax({
@@ -183,8 +184,8 @@ function displayPreviousScores(previousGame) {
 
 
 function displayArticles(articles) {
-  $("#dropdown").removeClass("height").addClass("mb-3 mt-3");
-
+  //$("#dropdown").removeClass("height").addClass("mb-3 mt-3");
+  $("<h1>").text("Team News").appendTo("#tname").addClass("is-size-2");
   for (var i = 0; i < articles.length; i++) {
     var div = $("<div>");
     $('<h1>')
@@ -196,7 +197,7 @@ function displayArticles(articles) {
       .text(articles[i].description)
       .appendTo(div);
 
-    div.appendTo("#tname").addClass("ml-5");
+    div.appendTo("#tname").addClass ("ml-5");
   console.log();
   }
 }
