@@ -29,20 +29,28 @@
         <select id="teams">
           <option>Select Your Team</option>
         </select>
-        <button id="save">Save As Favorite!</button>
       </div>
-      <div id="buttons"></div>
-    </div>
-    <aside class="container is-pulled-left =mobile">
-      <div id="title" class="container ml-2 mb-3"></div>
-      <div class="container ml-2" id="schedule"></div>
-      <div class="container ml-2" id="scores"></div>
-    </aside>
-    <main class="container is-pulled-right =mobile">
-      <div id="tname" class="container mx-2 mb-3"></div>
-      <div class="container ml-4" id="news"></div>
-    </main>
+      <div class="buttons mt-2">
+        <button id="save" class="button is-dark">Save As Favorite!</button>
+      </div>
 
+      <div class="buttons" id="buttons"></div>
+    </div>
+    <section id="main-section" class="container columns">
+      <aside class="container is-pulled-left columns is-mobile">
+        <div class="column">
+          <div id="title" class="container ml-1 mb-3"></div>
+          <div class="container mx-2" id="schedule"></div>
+          <div class="container mx-2" id="scores"></div>
+        </div>
+      </aside>
+      <main class="container is-pulled-right columns is-mobile">
+        <div class="column">
+          <div id="tname" class="container mx-2 mb-3"></div>
+          <div class="container" id="news"></div>
+        </div>
+      </main>
+    </section>
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
