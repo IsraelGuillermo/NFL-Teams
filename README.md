@@ -29,7 +29,7 @@ And the latest news regarding the team/s from a variety of sources.
 *  Must use at least two server side APIs:
 *    https://www.thesportsdb.com/api/v1/json/1
 *    https://gnews.io/api/v4/search?q=
-*  Must use a CSS frameworj other than Bootstrap:
+*  Must use a CSS framework other than Bootstrap:
 *    https://bulma.io/
 *  Must use client-side storage to store presistent data:
 *    <img src= "assets\Checkmark.png">
