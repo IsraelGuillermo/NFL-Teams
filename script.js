@@ -7,7 +7,6 @@ $.ajax({
   url: baseURL + "search_all_teams.php?l=NFL",
   method: "GET",
 }).then(function (response) {
-  console.log(response);
   for (var i = 0; i < response.teams.length; i++) {
     var team = {
       [response.teams[i].idTeam]: response.teams[i].strTeam,
@@ -30,7 +29,6 @@ function getNews(teamSelected) {
     url: baseUrl + teamSelected + "&token=" + apiKey,
     method: "GET",
   }).then(function (response) {
-    console.log(response);
     displayArticles(response.articles);
   });
 }
@@ -41,32 +39,8 @@ $("#teams").on("change", function () {
 
   displayGameInfo(teamId);
   getNews(teamSelected);
-  loadTeamBadge(teamName);
+  loadTeamBadge(teamSelected);
 });
-/*
-  $.ajax({
-    url: baseUrl + teamSelected,
-    method: "GET",
-  }).then(function (response) {
-    console.log(response);
-    displayArticles(response.articles);
-  });
-  */
-
-// function displayPastGames(events) {
-//   for (var i = 0; i < events.length; i++) {
-//     var div = $("<div>");
-//     $("<h1>")
-//       .text(events[i].strEvent)
-//       .addClass("is-size-5 is-text-centered")
-//       .appendTo(div);
-//     $("<p>")
-//       .text(new Date(events[i].dateEvent).toLocaleDateString())
-//       .addClass("is-size-5")
-//       .prependTo(div);
-//     div.prependTo("#schedule").addClass("ml-5");
-//   }
-// }
 function displaySchedule(events) {
   $("#dropdown").removeClass("height").addClass("mb-3 mt-3");
 
@@ -96,7 +70,6 @@ function displayPreviousScores(previousGame) {
   var idAwayTeam = previousGame.idAwayTeam;
   //TODO:  We need to translate the team id to the team name.
   // We have an id saved to the teams array we we can lookup
-  console.log("Away:" + getTeamNameFromId(idAwayTeam), awayScore);
   var homeScore = previousGame.intHomeScore;
   var idHomeTeam = previousGame.idHomeTeam;
   var div = $("<div>").addClass("columns notification");
@@ -122,7 +95,10 @@ function displayPreviousScores(previousGame) {
 //Script for displaying articles begins here.
 
 function displayArticles(articles) {
-  $("<h1>").text("Team News").appendTo("#tname").addClass("is-size-2");
+  $("<h1>")
+    .text("Team News")
+    .appendTo("#tname")
+    .addClass("is-size-2 lead-titles");
   for (var i = 0; i < articles.length; i++) {
     var div = $("<div>").addClass("notification");
     var newH1 = $("<h1>").addClass("is-size-5").appendTo(div);
@@ -143,15 +119,11 @@ function displayArticles(articles) {
     $("<p>").text(description).appendTo(div);
 
     div.appendTo("#tname");
-    console.log();
   }
 }
 
 $("#save").on("click", function () {
   var newTeam = $("#teams").find("option:selected").text();
-  // $("<button>")
-  //   .text($("#teams").find("option:selected").text())
-  //   .appendTo("#buttons");
   favoriteTeams.push(newTeam);
   saveTeams();
   renderFavTeams();
@@ -193,48 +165,13 @@ function displayGameInfo(teamId) {
     url: baseURL + "eventslast.php?id=" + teamId,
     method: "GET",
   }).then(function (response) {
-    //TODO: Get Scores and Get Team Names.  Show team name and the score
-    console.log(response);
-    // displayPastGames(response.results);
-
-    //intAwayScore
-    //idAwayTeam
-
-    //idHomeTeam
-    //intHomeScore
-
-    // for (var i = 4; i < response.results.length; i--) {
-    //   var previousGame = response.results[i];
-    //   var awayScore = previousGame.intAwayScore;
-    //   var idAwayTeam = previousGame.idAwayTeam;
-    //   console.log(
-    //     "Away Score",
-    //     awayScore + "Away Team",
-    //     getTeamNameFromId(idAwayTeam)
-    //   );
-
-    //   var homeScore = previousGame.intHomeScore;
-    //   var idHomeTeam = previousGame.idHomeTeam;
-
-    //   console.log(
-    //     "Home Score",
-    //     homeScore + " Home Team",
-    //     getTeamNameFromId(idHomeTeam)
-    //   );
-
-    //   $("<h1>").text(getTeamNameFromId(idHomeTeam)).appendTo("#schedule");
-    // }
-
     response.results.forEach((previousGame) => {
-      console.log(previousGame);
       var awayScore = previousGame.intAwayScore;
       var idAwayTeam = previousGame.idAwayTeam;
       //TODO:  We need to translate the team id to the team name.
       // We have an id saved to the teams array we we can lookup
-      console.log("Away:" + getTeamNameFromId(idAwayTeam), awayScore);
       var homeScore = previousGame.intHomeScore;
       var idHomeTeam = previousGame.idHomeTeam;
-      console.log("Home:" + getTeamNameFromId(idHomeTeam), homeScore);
       displayPreviousScores(previousGame);
     });
 
@@ -242,7 +179,6 @@ function displayGameInfo(teamId) {
       url: baseURL + "eventsnext.php?id=" + teamId,
       method: "GET",
     }).then(function (response) {
-      console.log(response);
       displaySchedule(response.events);
     });
   });
@@ -251,14 +187,10 @@ $(document).on("click", ".favoriteButton", function (event) {
   event.preventDefault();
   getNews($(this).text());
   displayGameInfo(getTeamIdFromName($(this).text()));
+  loadTeamBadge($(this).text());
 });
 
 function getTeamIdFromName(teamName) {
-  // for (var [teamId, nameOfTeam] of Object.entries(teams)) {
-  //   if (nameOfTeam === teamName) {
-  //     return teamId;
-  //   }
-  // }
   for (var i = 0; i < teams.length; i++) {
     if (Object.values(teams[i])[0] === teamName) {
       return Object.keys(teams[i])[0];
@@ -266,13 +198,14 @@ function getTeamIdFromName(teamName) {
   }
   return "unable to find";
 }
-// function loadTeamBadge(teamName) {
-//   for (var i = 0; i < teams.length; i++) {
-//     if (Object.values(teams[i])[0] === teamName) {
-//       var img = $("<img>");
+function loadTeamBadge(teamName) {
+  $("#image").empty();
+  for (var i = 0; i < teams.length; i++) {
+    if (Object.values(teams[i])[0] === teamName) {
+      var img = $("<img>");
 
-//       img.attr("src", badge[i]).appendTo("#title");
-//     }
-//   }
-//   return "unable to find";
-// }
+      img.attr("src", teams[i].badge).appendTo("#image");
+    }
+  }
+  return "unable to find";
+}
