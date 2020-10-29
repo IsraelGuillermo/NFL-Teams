@@ -47,7 +47,8 @@ And the latest news regarding the team/s from a variety of sources.
 
 The following image demonstrates the application functionality:
 
-<img src="">
+<img src="assets\Screenshot 2020-10-29 114045.png">
+<img src="assets\Screenshot 2020-10-29 114207.png">
 
 ## Review
 
