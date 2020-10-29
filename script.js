@@ -41,6 +41,7 @@ $("#teams").on("change", function () {
 
   displayGameInfo(teamId);
   getNews(teamSelected);
+  loadTeamBadge(teamName);
 });
 /*
   $.ajax({
@@ -77,7 +78,7 @@ function displaySchedule(events) {
       .addClass("is-size-5")
       .appendTo(div);
 
-    div.appendTo("#schedule").addClass("ml-5");
+    div.appendTo("#schedule");
   }
 }
 
@@ -98,7 +99,7 @@ function displayPreviousScores(previousGame) {
   console.log("Away:" + getTeamNameFromId(idAwayTeam), awayScore);
   var homeScore = previousGame.intHomeScore;
   var idHomeTeam = previousGame.idHomeTeam;
-  var div = $("<div>").addClass("columns ml-5 notification");
+  var div = $("<div>").addClass("columns notification");
 
   $("<h1>")
     .text(
@@ -121,7 +122,6 @@ function displayPreviousScores(previousGame) {
 //Script for displaying articles begins here.
 
 function displayArticles(articles) {
-  //$("#dropdown").removeClass("height").addClass("mb-3 mt-3");
   $("<h1>").text("Team News").appendTo("#tname").addClass("is-size-2");
   for (var i = 0; i < articles.length; i++) {
     var div = $("<div>").addClass("notification");
@@ -142,7 +142,7 @@ function displayArticles(articles) {
 
     $("<p>").text(description).appendTo(div);
 
-    div.appendTo("#tname").addClass("ml-5");
+    div.appendTo("#tname");
     console.log();
   }
 }
@@ -176,7 +176,9 @@ function renderFavTeams() {
   $("#buttons").empty();
   for (var i = 0; i < favoriteTeams.length; i++) {
     var team = favoriteTeams[i];
-    var button = $("<button>").addClass("favoriteButton");
+    var button = $("<button>").addClass(
+      "favoriteButton button is-primary is-link is-rounded "
+    );
 
     button.text(team).appendTo("#buttons");
   }
@@ -264,3 +266,13 @@ function getTeamIdFromName(teamName) {
   }
   return "unable to find";
 }
+// function loadTeamBadge(teamName) {
+//   for (var i = 0; i < teams.length; i++) {
+//     if (Object.values(teams[i])[0] === teamName) {
+//       var img = $("<img>");
+
+//       img.attr("src", badge[i]).appendTo("#title");
+//     }
+//   }
+//   return "unable to find";
+// }

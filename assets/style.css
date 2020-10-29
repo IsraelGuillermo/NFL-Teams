@@ -1,6 +1,5 @@
 body,
 html {
-  
 }
 .teams-container {
   display: flex;
@@ -11,10 +10,10 @@ html {
 }
 
 aside {
-  padding: 5rem;
+  padding: 2rem;
 }
 main {
-  padding: 5rem;
+  padding: 2rem;
 }
 .height {
   min-height: 80vh;
