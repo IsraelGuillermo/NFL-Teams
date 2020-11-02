@@ -124,7 +124,11 @@ function displayArticles(articles) {
 
 $("#save").on("click", function () {
   var newTeam = $("#teams").find("option:selected").text();
-  favoriteTeams.push(newTeam);
+  if (newTeam === "Select Your Team") {
+    return;
+  } else if (!favoriteTeams.includes(newTeam)) {
+    favoriteTeams.push(newTeam);
+  }
   saveTeams();
   renderFavTeams();
 });
