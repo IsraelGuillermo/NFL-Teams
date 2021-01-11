@@ -1,4 +1,4 @@
-# Project #1
+# NFL Teams
 
 The task presented us was creating a Mobile first - UI webpage to present to the class. presenting the functionality that addresses users requests for information.
 The team used a KanBan board to list tasks and discussed assignments during zoom meetings.
