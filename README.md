@@ -40,7 +40,7 @@ And the latest news regarding the team/s from a variety of sources.
 *  Does NOT use alerts, confirms, or prompts (look into modals):
 *    <img src= "assets\Checkmark.png">
 *  Must be deployed to GitHub Pages:
-*    https://israelguillermo.github.io/project_01/  
+*   https://israelguillermo.github.io/NFL-Teams/ 
 *  Must be interactive (i.e: accept and respond to user input)
 *    <img src= "assets\Checkmark.png"> 
 
